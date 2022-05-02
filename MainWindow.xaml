@@ -4,9 +4,61 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WebBrowser"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="KloynadaTeam" Height="1024" Width="1280">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30px"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Name="ControllPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="600"></ColumnDefinition>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="«" Grid.Column="0" Click="BackButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="»" Grid.Column="1">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <Button Content="⟳" Grid.Column="2" Click="UpdateButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <TextBox Name="AddressBar" FontSize="20" Grid.Column="3" BorderBrush="#FF999999" Text="" Background="{x:Null}" VerticalAlignment="Stretch" KeyDown="AddressBar_KeyDown">
+                
+            </TextBox>
+            <Button Content="->" Grid.Column="4" Click="AddressButton">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="7"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*"></ColumnDefinition>
+                <ColumnDefinition Width="760*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <cefSharp:ChromiumWebBrowser x:Name="Browser" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Address="google.com" Grid.Column ="1"></cefSharp:ChromiumWebBrowser>
+        </Grid>
     </Grid>
 </Window>
